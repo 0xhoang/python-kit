@@ -1,0 +1,11 @@
+flask==3.0.3;
+Flask-SQLAlchemy==3.1.1
+Flask-Injector==0.15.0
+sentry-sdk==0.19.5
+injector==0.20.0
+mysqlclient==2.2.4;
+marshmallow-dataclass==8.4.2;
+marshmallow-enum==1.5.1
+marshmallow-sqlalchemy==0.24.3;
+marshmallow==3.18.0;
+dataclasses-json==0.6.6
