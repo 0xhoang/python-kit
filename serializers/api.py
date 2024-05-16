@@ -1,7 +1,7 @@
-import dataclasses
-from marshmallow import validate, Schema, fields, ValidationError
+from dataclasses import field as fields
 from marshmallow_dataclass import dataclass
-from typing import Optional, Type, ClassVar, List
+from marshmallow import validate, Schema
+from typing import Type, ClassVar
 from dataclasses_json import DataClassJsonMixin
 
 from constant.constant import ASC, DES
@@ -9,8 +9,6 @@ from constant.constant import ASC, DES
 
 @dataclass
 class SortCriterion(DataClassJsonMixin):
-    field: str = dataclasses.field(default="", metadata={})
-    order: str = dataclasses.field(
-        default=ASC, metadata={"validate": validate.OneOf([ASC, DES])}
-    )
+    field: str = fields(default="", metadata={})
+    order: str = fields(default=ASC, metadata={"validate": validate.OneOf([ASC, DES])})
     Schema: ClassVar[Type[Schema]] = Schema

@@ -8,11 +8,8 @@ from flask_sqlalchemy import SQLAlchemy
 from injector import singleton
 
 from .json_encoder import CustomJSONEncoder
-
 from cmd.app import api, public_api
 from cmd.app.base import rest_public_api, rest_api
-
-from config.config import Config
 from .db import init_db, db
 
 PKG_NAME = os.path.dirname(os.path.realpath(__file__)).split("/")[-1]
