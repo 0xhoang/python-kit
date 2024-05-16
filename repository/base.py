@@ -298,32 +298,3 @@ class BaseRepository(Generic[T], metaclass=abc.ABCMeta):
                 return None
         else:
             return 0
-
-    def add_filter_permission_po_cate(self, query, clazz, cate_id_column_name):
-        columns = inspect(clazz).columns
-        cate_id_column = None
-        for column in columns:
-            if column.name == cate_id_column_name:
-                cate_id_column = column
-                break
-        user = request.user
-        category_permissions = request.user_category_permission_service.get(user.id)
-        category_permissions_id = list(
-            map(lambda x: x.po_cate_id, category_permissions)
-        )
-        if category_permissions and cate_id_column is not None:
-            query = query.filter(cate_id_column.in_(category_permissions_id))
-        return query
-
-    def add_filter_permission_sub_cate(self, query, clazz, sub_cate_column_name):
-        columns = inspect(clazz).columns
-        cate_id_column = None
-        for column in columns:
-            if column.name == sub_cate_column_name:
-                cate_id_column = column
-        user = request.user
-        category_permissions = request.user_category_permission_service.get(user.id)
-        sub_category_permissions = list(map(lambda x: x.sub_cate, category_permissions))
-        if category_permissions and cate_id_column:
-            query = query.filter(cate_id_column.in_(sub_category_permissions))
-        return query
