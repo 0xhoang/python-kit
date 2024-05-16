@@ -1,7 +1,6 @@
 import logging
 from flask import current_app, jsonify
 from flask_restful import Resource, reqparse, Api
-from marshmallow import ValidationError
 from werkzeug.exceptions import HTTPException
 
 from cmd.app import api, public_api

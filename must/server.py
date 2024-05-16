@@ -28,6 +28,7 @@ def create_app(app_name=PKG_NAME, **kwargs):
     app = Flask(app_name)
     app.config.from_object(config_name)
     app.config["RESTFUL_JSON"] = {"cls": CustomJSONEncoder}
+    app.json_encoder = CustomJSONEncoder
 
     init_db(app)
     init_cors(app)

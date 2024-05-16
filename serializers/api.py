@@ -1,7 +1,8 @@
 from dataclasses import field as fields
-from marshmallow_dataclass import dataclass
-from marshmallow import validate, Schema
 from typing import Type, ClassVar
+
+from marshmallow import validate, Schema
+from marshmallow_dataclass import dataclass
 from dataclasses_json import DataClassJsonMixin
 
 from constant.constant import ASC, DES

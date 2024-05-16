@@ -3,8 +3,6 @@ import json
 from decimal import Decimal
 from enum import Enum
 
-from flask import jsonify
-
 
 class CustomJSONEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -15,4 +13,4 @@ class CustomJSONEncoder(json.JSONEncoder):
         if isinstance(obj, Decimal):
             return float(obj)
         else:
-            return super().default(obj)
+            return super(CustomJSONEncoder, self).default(obj)

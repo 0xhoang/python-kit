@@ -1,5 +1,5 @@
+from flask import Response
 from injector import inject
-from marshmallow import ValidationError
 from werkzeug.exceptions import BadRequest
 
 from cmd.app.base import BaseResource
@@ -50,4 +50,8 @@ class HelloController(BaseResource):
                 "User not found"
             )
 
-        return user
+        return Response(
+            response=user.to_json(),
+            status=200,
+            mimetype="application/json"
+        )

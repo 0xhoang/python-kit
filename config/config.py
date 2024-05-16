@@ -10,6 +10,7 @@ path, filename = os.path.split(full_path)
 
 class Config:
     """Base configuration."""
+    SECRET_KEY = os.getenv("SECRET_KEY", "dev")
     DEBUG = bool(os.getenv("DEBUG", 0))
     DB_SCHEMA = os.getenv("DB_SCHEMA", "mysql+mysqldb")
     DB_USER = os.getenv("DB_USER", "root")
@@ -39,8 +40,8 @@ class Config:
 
     SWAGGER = {
         "version": "1.0.1",
-        "title": "Optimus Supplier Portal",
-        "description": "The new backend service of Supplier Portal",
+        "title": "Python kit",
+        "description": "The new backend service",
     }
 
     SENTRY_DSN = os.environ.get("SENTRY_DSN", "")
