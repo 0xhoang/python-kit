@@ -25,17 +25,6 @@ class Config:
         % (DB_SCHEMA, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME),
     )
 
-    SQLALCHEMY_ENGINE_OPTIONS = {
-        "poolclass": QueuePool,
-        "pool_size": 3,
-        "pool_recycle": 3600,
-        "pool_pre_ping": True,
-        "json_serializer": lambda obj: json.dumps(
-            obj, ensure_ascii=False,
-            cls=CustomJSONEncoder
-        ),
-    }
-
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     SWAGGER = {
@@ -48,5 +37,5 @@ class Config:
     ENVIRONMENT = os.getenv("ENVIRONMENT", "DEVELOP").upper()
 
 
-class WorkerConfig(Config):
+class AppConfig(Config):
     pass

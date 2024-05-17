@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS
 from flask import Response
 from flask_injector import FlaskInjector, request
@@ -21,11 +21,8 @@ cors = CORS(expose_headers=EXPOSE_HEADER)
 
 pythonkit_injector = None
 
-
-def create_app(app_name=PKG_NAME, **kwargs):
-    config_name = os.getenv("APP_SETTINGS", "config.config.WorkerConfig")
-
-    app = Flask(app_name)
+def create_app(config_name="config.config.AppConfig", **kwargs):
+    app = Flask(__name__)
     app.config.from_object(config_name)
     app.config["RESTFUL_JSON"] = {"cls": CustomJSONEncoder}
     app.json_encoder = CustomJSONEncoder

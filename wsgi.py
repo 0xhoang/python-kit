@@ -15,9 +15,9 @@ warnings.simplefilter("ignore", category=sa_exc.SAWarning)
 #     environment=ENVIRONMENT,
 # )
 
-app = create_app()
+server_app = create_app()
 
 if __name__ == "__main__":
     logging.basicConfig(stream=sys.stdout, level=logging.ERROR)
     logging.getLogger("sqlalchemy.engine").setLevel(logging.ERROR)
-    run_simple("0.0.0.0", 8888, app, use_reloader=True)
+    run_simple("0.0.0.0", 8888, server_app, use_reloader=True)
