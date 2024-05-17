@@ -14,12 +14,10 @@ from .db import init_db, db
 
 PKG_NAME = os.path.dirname(os.path.realpath(__file__)).split("/")[-1]
 
-TOTAL_HEADER = "X-Total-Count"
-CD_HEADER = "Content-Disposition"
-EXPOSE_HEADER = [TOTAL_HEADER, CD_HEADER]
-cors = CORS(expose_headers=EXPOSE_HEADER)
+cors = CORS(expose_headers=["Content-Type", "Authorization", "X-Request-ID"])
 
 pythonkit_injector = None
+
 
 def create_app(config_name="config.config.AppConfig", **kwargs):
     app = Flask(__name__)
