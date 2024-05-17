@@ -19,7 +19,7 @@ CD_HEADER = "Content-Disposition"
 EXPOSE_HEADER = [TOTAL_HEADER, CD_HEADER]
 cors = CORS(expose_headers=EXPOSE_HEADER)
 
-flask_injector = None
+pythonkit_injector = None
 
 
 def create_app(app_name=PKG_NAME, **kwargs):
@@ -58,11 +58,11 @@ def injector_default(binder):
 
 
 def init_flask_injector(app, modules=None, injector=None):
-    global flask_injector
+    global pythonkit_injector
 
     injected_modules = [injector_default]
     if modules:
         injected_modules = modules
 
-    flask_injector = FlaskInjector(app=app, modules=injected_modules, injector=injector)
-    app.injector = flask_injector
+    pythonkit_injector = FlaskInjector(app=app, modules=injected_modules, injector=injector)
+    app.injector = pythonkit_injector
